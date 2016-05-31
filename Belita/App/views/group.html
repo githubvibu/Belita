@@ -1,0 +1,113 @@
+﻿<div ng-include="'App/views/header.html'"></div>
+<div class="clearfix"></div>
+<section class="innerBg_Box ng-scope ">
+    <div ng-controller="groupController" ng-init="GetGroupList()" id="dvGroup">
+        <div class="main_box">
+            <div class="services_add_box">
+                <div class="search_box ">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <button type="submit" class="btn btn-default pull-right" ng-click="ShowGroupModel()">Create New Group</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <span class="success_message">{{message}}</span>
+                <div class="table-responsive">
+                    <div id="jqxgrid"></div>
+                </div>
+            </div>
+            <!-- model popup--->
+            <div class="modal fade" id="dvAddGroup" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" ng-click="ClearFrom()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">
+                                Create Group
+                            </h4>
+                        </div>
+                        <form name="formGroup">
+                            <div class="modal-body">
+                                <!-- box start -->
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Group Name<span class="required">*</span></label>
+                                            <input type="text" class="form-control" name="GroupName" ng-model="GroupName" placeholder="" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Description</label>
+                                            <input type="text" class="form-control" name="Description" ng-model="Description" placeholder="">
+                                        </div>
+                                    </div>
+                                    <!-- box end -->
+                                    <!-- box start -->
+
+                                    <div class="clearfix">
+                                        <div class="col-sm-6 col-md-6">
+
+                                            <label>
+                                                <input type="radio" name="groupType" ng-model="groupType" ng-value="1" />
+                                                Customer Id Group
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="groupType   " ng-model="groupType" ng-value="2" />
+                                                Customer Mobile No Group
+                                            </label>
+
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Select File</label>
+                                                <input type="file" id="groupFile" accept=".xls,.xlsx" class="form-control" name="File" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- box end -->
+                                </div>
+                                <div class="modal-footer">
+                                    <!--<button type="button" class="btn btn-default" ng-click="ClearFrom()" data-dismiss="modal">Close</button>-->
+                                    <button type="button" class="btn btn-default" ng-click="CreateGroup()"
+                                            ng-disabled="formGroup.GroupName.$error.required">
+                                        Save Group
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+
+            <div class="modal fade" id="dvGroupDetails" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">
+                                Group Details
+                            </h4>
+                        </div>
+                        <form name="formGroup1">
+                            <div class="modal-body">
+                                <div class="table-responsive">
+                                    <div id="jqxgrid1"></div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+        </div>
+    </div>
+</section>

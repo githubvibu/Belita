@@ -1,0 +1,67 @@
+﻿<div ng-include="'App/views/header.html'"></div>
+<div class="clearfix"></div>
+<section class="innerBg_Box ng-scope">
+    <div ng-controller="faqController" ng-init="GetFaq()" id="dvFaq">
+        <div class="main_box">
+            <div class="search_box clearfix">
+                <form class="form-inline">
+                    <div class="form-group pull-right">
+                        <div class="input-group">
+                            <button type="submit" class="btn btn-default pull-right" ng-click="CreateFaq()">Add FAQ</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <span class="success_message">{{message}}</span>
+            <div class="table-responsive">
+                <span ng-show="Spinner" us-spinner="{radius:30, width:8, length: 16}"></span>
+                <div id="jqxgrid"></div>
+            </div>
+            <div class="modal fade" id="dvAddFaq" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="ClearForm()"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">{{Title}}</h4>
+                        </div>
+
+                        <form name="FAQ" novalidate>
+
+                            <div class="modal-body">
+
+                                <div class="panel-body">
+
+                                    <div class="clearfix">
+                                        <div class="col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">FAQ Questions<span style="color:red">*</span></label>
+                                                <textarea rows="5" class="form-control" ng-model="faqQues" name="faqQues" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">FAQ Answers<span style="color:red">*</span></label>
+                                                <textarea rows="5" class="form-control" ng-model="faqAns" name="faqAns" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <!--<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ClearForm()">Close</button>-->
+                                <button type="button" class="btn btn-default" ng-disabled="FAQ.faqQues.$error.required||
+                                                          FAQ.faqAns.$error.required" ng-click="SaveFaq()">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

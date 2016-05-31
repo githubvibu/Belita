@@ -1,0 +1,80 @@
+﻿<div ng-include="'App/views/header.html'"></div>
+<div class="clearfix"></div>
+
+<section class="innerBg_Box">
+    <div ng-controller="pushnotificationController" id="dvPushNotification" ng-init="GetNotification()">
+        <form name="pushnotification" >
+            <div class="main_box">
+                <span class="success_message">{{message}}</span>
+                <div class="table-responsive pushnotification_box">
+                    <div class="clearfix">
+                    </div>
+
+                    <span ng-show="Spinner" us-spinner="{radius:30, width:8, length: 16}"></span>
+                    <div class="clearfix">
+                        <div class="col-sm-8 col-md-8">
+                            <div class="form-group">
+                                <div id="dvImage">
+                                    <!--ng-show="dataType==1"-->
+                                    <label for="exampleInputEmail1">Upload Image</label>
+                                    <input type="file" id="file" accept="image/*" onchange="angular.element(this).scope().uploadImage()" class="form-control" />
+                                </div>
+                                <div id="dvText">
+                                    <!--ng-show="dataType==2"-->
+                                    <label for="exampleInputEmail1">Enter Text</label>
+                                    <input type="text" class="form-control" name="text" ng-model="text" required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix">
+                            <div class="col-sm-12 col-md-12">
+
+                                <div class="form-group send_Entermobile">
+                                    <label>
+                                        <input type="radio" name="sent" ng-click="SendToAll()" ng-model="sent" ng-value="1" />
+                                        Send to All
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="sent" ng-click="SendMobileNo()" ng-model="sent" ng-value="2" />
+                                        Mobile No
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="sent" ng-click="SendGroup()" ng-model="sent" ng-value="3" />
+                                        Send to Group
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-8 col-md-8">
+                            <div class="form-group">
+                                <div id="dvMobileNo" ng-show="sent==2">
+                                    <label for="exampleInputEmail1">Mobile No</label>
+                                    <input type="text" class="form-control" ng-model="mobileNo" name="mobileNo" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-md-8">
+                            <div class="form-group">
+                                <div id="dvGroupId" ng-show="sent==3">
+                                    <label for="exampleInputEmail1">Select Group</label>
+                                    <select class="form-control" name="groupNameId" ng-model="groupNameId" >
+                                        <option value="">Select</option>
+                                        <option data-ng-repeat="item in groupName" value="{{item.id}}">{{item.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        <div class="col-sm-3 col-md-3 pull-left">
+                            <input type="submit" ng-show="VIEW" value="Submit" class="form-control btn btn-default" ng-click="Submit()" ng-disabled="pushnotification.text.$error.required || (pushnotification.mobileNo.$error.required && sent==2 ) " />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,376 @@
+﻿<div ng-include="'App/views/header.html'"></div>
+<div class="clearfix"></div>
+<section class="innerBg_Box">
+    <div ng-controller="discountController" ng-init="GetDiscount(1)" id="dvDiscount">
+        <div class="main_box">
+            <div class="search_box clearfix">
+
+                <form class="form-inline">
+                    <!--<div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
+                            <input type="text" class="form-control" id="exampleInputAmount" placeholder="Search">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default">Go</button>-->
+                    <div class="form-group pull-right">
+                        <div class="input-group">
+                            <button type="submit" class="btn btn-default pull-right" ng-if="CREATE" ng-click="ShowModel()">Create New</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <span class="success_message">{{message}}</span>
+
+
+            <div class="table-responsive">
+                <span ng-show="Spinner" us-spinner="{radius:30, width:8, length: 16}"></span>
+                <div id="jqxgrid"></div>
+            </div>
+            <div class="modal fade" id="dvAddDiscount" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">
+                                {{title}}
+
+                            </h4>
+
+                        </div>
+                        <form name="formDiscount" novalidate>
+                            <div class="modal-body">
+                                <!-- box -->
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Discount Type <span class="required">*</span> </label>
+                                            <select class="form-control" name="DiscTypeId" ng-model="DiscTypeId" required>
+                                                <option value="">Select</option>
+                                                <option ng-repeat="item in Disctype" value="{{item.id}}">{{item.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInpuEtmail1">Description<span class="required">*</span> </label>
+                                            <input type="text" class="form-control" name="Description" ng-model="Description" id="" placeholder="" required>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- box start -->
+                                <div class="clearfix" ng-show="DiscTypeId==1 && isEdit==false">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">No. of Vouchures to generate<span class="required">*</span> </label>
+                                            <input type="text" class="form-control" name="voucherCount" ng-model="voucherCount" id="" placeholder="" only-digits required>
+                                            <!--<span style="color:white" ng-show="DiscTypeId==1 && formDiscount.voucherCount.$error.required">Description is required</span>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Voucher prefix<span class="required">*</span></label>
+                                            <input type="text" class="form-control" name="voucherPrefix" ng-model="voucherPrefix" id="" placeholder="" required>
+                                            <!--<span style="color:white" ng-show="DiscTypeId==1 && formDiscount.voucherPrefix.$error.required">Voucher prefix is required</span>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- box end -->
+                                <!-- box start -->
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Discount Applicability Type<span class="required">*</span></label>
+                                            <select class="form-control" name="DiscApplicabilityTypeId" ng-model="DiscApplicabilityTypeId" required>
+                                                <option value="">Select</option>
+                                                <option data-ng-repeat="item in DiscApplicabilityType" value="{{item.id}}">{{item.name}}</option>
+                                            </select>
+                                            <!--<span style="color:white" ng-show="formDiscount.DiscApplicabilityTypeId.$error.required">Discount Applicability Type is required</span>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Amount<span class="required">*</span></label>
+                                            <input type="text" class="form-control" name="discValue" ng-model="discValue" id="" placeholder="" only-digits required>
+                                            <!--<span style="color:white" ng-show="formDiscount.discValue.$error.required">Amount</span>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- box end -->
+                                <!-- box start -->
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Start Date</label>
+                                            <div>
+                                                <!--class="dropdown"-->
+                                                <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="">
+                                                    <div class="input-group">
+                                                        <input type="text" datepicker-popup="dd/MM/yyyy HH:mm" class="form-control" ng-model="DiscountStartDate">
+                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                    </div>
+                                                </a>
+
+                                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                    <datetimepicker ng-model="DiscountStartDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3'}" required>
+                                                    </datetimepicker>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">End Date</label>
+                                            <div>
+                                                <!--class="dropdown"-->
+                                                <a class="dropdown-toggle" id="dropdown4" role="button" data-toggle="dropdown" data-target="#" href="">
+                                                    <div class="input-group">
+                                                        <input type="text" datepicker-popup="dd/MM/yyyy HH:mm" class="form-control" ng-model="DiscountEndDate">
+                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                    </div>
+                                                </a>
+
+                                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                    <datetimepicker ng-model="DiscountEndDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown4'}" required>
+                                                    </datetimepicker>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- box end -->
+                                <!--<div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Payment Mode</label>
+                                            <dropdown-multiselect1 class="dropdown_multi_box" model="PaymentModeIds"
+                                                                   options="PaymentModeList" text="text3"></dropdown-multiselect1>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                    </div>
+                                </div>-->
+                                <div class="clearfix" >
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group" >
+                                            <label for="exampleInputEmail1">Discount Customer Type<span class="required">*</span></label>
+                                            <select class="form-control" name="customerTypeId" ng-model="customerTypeId" required>
+                                                <option value="">---Select---</option>
+                                                <option ng-repeat="item in customerTypeArray.items" value="{{item.id}}">{{item.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Discount Application Type<span class="required">*</span></label>
+                                            <select class="form-control" name="applicationTypeId" ng-model="applicationTypeId" required>
+                                                <option value="">---Select---</option>
+                                                <option ng-repeat="item in applicationTypeArray.items" value="{{item.id}}">{{item.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- box start -->
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <!--<label for="exampleInputEmail1">Expiry Date<span style="color:red">*</span></label>
+
+                                            <div >
+
+                                                <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="">
+                                                    <div class="input-group">
+                                                        <input type="text" datepicker-popup="dd/MM/yyyy" class="form-control" ng-model="ExpiryDate">
+                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                    </div>
+                                                </a>
+
+                                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                    <datetimepicker ng-model="ExpiryDate"  data-datetimepicker-config="{ dropdownSelector: '#dropdown2',startView:'day', minView:'day' }" required>
+                                                    </datetimepicker>
+
+                                                </ul>
+                                            </div>-->
+
+                                            <label for="exampleInputEmail1">Payment Mode</label>
+                                            <dropdown-multiselect1 class="dropdown_multi_box" model="PaymentModeIds"
+                                                                   options="PaymentModeList" text="text3"></dropdown-multiselect1>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Valid for city<span class="required">*</span></label>
+                                            <dropdown-multiselect class="dropdown_multi_box" model="cityId"
+                                                                  options="cities" text="text"></dropdown-multiselect>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- box end -->
+                                <!-- box start -->
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6 ">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Select Category<span class="required">*</span></label>
+
+                                            <dropdown-multiselect1 class="dropdown_multi_box" model="selectedCategoryIds"
+                                                                   options="CategoryIds" text="text1"></dropdown-multiselect1>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 discount_box">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Select Services<span class="required">*</span></label>
+                                            <dropdown-multiselect1 class="dropdown_multi_box" model="selectedServicesIds"
+                                                                   options="ServicesIds" text="text2"></dropdown-multiselect1>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- box end -->
+
+
+
+
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group" ng-show="DiscTypeId==2 || DiscTypeId==3">
+                                            <label for="exampleInputEmail1">Discount Code<span class="required">*</span></label>
+                                            <input type="text" class="form-control" name="discCode" ng-model="discCode" id="" placeholder="" ng-required="DiscTypeId==2 || DiscTypeId==3" required>
+                                            <!--<span style="color:white" ng-show="formDiscount.discCode.$error.required">Discount Code is required</span>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                    </div>
+                                </div>
+                                <!-- box start -->
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="IsMinimumPrice">
+                                                    Minimum price applicability
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group" ng-show="IsMinimumPrice">
+                                            <label for="exampleInputEmail1">Minimum Amount</label>
+                                            <input type="text" class="form-control" ng-model="MinimumAmount" id="" placeholder="" only-digits>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- box end -->
+                                <!-- box start -->
+                                <div class="clearfix" ng-show="DiscTypeId==3">
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <!--<label>
+                                                <input type="radio" name="response" ng-model="Customer" ng-value="1" />
+                                                Select Customer
+                                            </label>-->
+                                            <label>
+                                                <input type="radio" name="response" ng-model="Customer" ng-value="3" />
+                                                All Customers
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="response" ng-model="Customer" ng-value="2" />
+                                                Select Group
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- box end -->
+                                <!-- box start -->
+                                <div ng-show="DiscTypeId==3">
+                                    <div class="clearfix" ng-show="Customer==1">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Enter Employee Code</label>
+                                                <input type="text" class="form-control" ng-model="EmployeeCode" id="" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix" ng-show="Customer==2">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Enter Group Name</label>
+                                                <select class="form-control" name="groupNameId" ng-model="groupNameId" required>
+                                                    <option value="">Select</option>
+                                                    <option data-ng-repeat="item in groupName" value="{{item.id}}">{{item.name}}</option>
+                                                </select>
+                                                <!--<input type="text" class="form-control" ng-model="GroupName" id="" placeholder="">-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group" ng-show="DiscTypeId!=1">
+                                            <!--ng-show="DiscTypeId!=1"-->
+                                            <label>
+                                                <input type="checkbox" name="offer" ng-model="offer" ng-value="1" />
+                                                Use as an offer
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <!--ng-show="DiscTypeId!=1"-->
+                                            <label>
+                                                <input type="checkbox" name="DiscStatusId" ng-model="DiscStatusId" />
+                                                Active
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="clearfix">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group" ng-show="DiscTypeId!=1">
+                                                <label>
+                                                    <input type="radio" name="usable" ng-model="Usable" ng-value="1" />
+                                                    Single usable per user
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="usable" ng-model="Usable" ng-value="2" />
+                                                    Multiple usable
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" ng-click="CreateDiscount()"
+                                                            ng-disabled="formDiscount.DiscTypeId.$error.required ||
+                                                          formDiscount.Description.$error.required|| formDiscount.discCode.$error.required||
+                                                          formDiscount.DiscApplicabilityTypeId.$error.required||
+                                                            formDiscount.customerTypeId.$error.required||formDiscount.applicationTypeId.$error.required||
+                                                          formDiscount.discValue.$error.required || cityId.length==0 || selectedCategoryIds.length==0 || selectedServicesIds.length==0
+                                             ">
+                                                        <!--formDiscount.groupNameId.$error.required|| ||ExpiryDate==''-->
+                                                        Save changes
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- box end -->
+                            </div>
+
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+        </div>
+    </div>
+</section>
+

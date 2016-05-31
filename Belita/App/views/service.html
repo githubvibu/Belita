@@ -1,0 +1,190 @@
+﻿<div ng-include="'App/views/header.html'"></div>
+<div class="clearfix"></div>
+<section class="innerBg_Box ng-scope">
+    <div ng-controller="serviceController" ng-init="loadForm()" id="dvService">
+        <div class="main_box">
+            <div class="search_box">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <select class="form-control" ng-model="cityId" ng-change="GetServiceData()">
+                                <option value="0">---Select City---</option>
+                                <option ng-repeat="item in city" value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default pull-right" ng-if="CREATE" ng-click="CreateService()">Create New Service</button>
+                </form>
+            </div>
+            <span class="success_message">{{message}}</span>
+            <span ng-show="Spinner" us-spinner="{radius:30, width:8, length: 16}"></span>
+            <div class="table-responsive">
+                
+                <div id="jqxgrid"></div>
+                
+            </div>
+
+            <div class="modal fade" id="dvUpdateService" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">
+                                Update Service
+
+                            </h4>
+
+                        </div>
+                        <form name="formUpdateService" novalidate>
+                            <div class="modal-body">
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Service Name<span class="required">*</span></label>
+                                            <input type="text" class="form-control" name="serviceName" ng-model="serviceName" id="" placeholder="" required>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Service Description</label>
+                                            <input type="text" class="form-control" name="serviceDescription" ng-model="serviceDescription" id="" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Service Category</label>
+                                            <select disabled class="form-control" ng-model="serviceCategoryID" name="serviceCategoryID">
+                                                <option value="0">Select</option>
+                                                <option ng-repeat="item in serviceCategory" value="{{item.id}}">{{item.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Product Service Type</label>
+                                            <select disabled class="form-control" ng-model="productServiceTypeId" name="productServiceType">
+                                                <option value="0">Select</option>
+                                                <option ng-repeat="item in productServiceType" value="{{item.id}}">{{item.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="clearfix" ng-show="productServiceTypeId!=1">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Product Service Category</label>
+                                            <!--<select disabled class="form-control" ng-model="productCategoryID" name="productCategoryID">
+                                                <option value="0">Select</option>
+                                                <option ng-repeat="item in productCategory" value="{{item.id}}">{{item.name}}</option>
+                                            </select>-->
+                                            <dropdown-multiselect disabled class="dropdown_multi_box" model="productCategoryIDArray"
+                                                                  options="productCategoryArray" text="text"></dropdown-multiselect>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group" ng-show="serviceCategoryID==7">
+                                            <label for="exampleInputEmail1">Belita Money<span style="color:red">*</span></label>
+                                            <input type="text" ng-required='serviceCategoryID==7' class="form-control" ng-model="belitaMoney" only-digits >
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group" ng-show="serviceCategoryID==7">
+                                            <label for="exampleInputEmail1">Belita Money Validity(In-Month)<span style="color:red">*</span></label>
+                                            <input type="text" ng-required='serviceCategoryID==7' class="form-control" ng-model="belitaMoneyValidity" only-digits >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Applicable for App</label>
+                                            <input type="checkbox" ng-model="isvalidOnApp" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="clearfix">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <div class="modal-footer">
+                                                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                                                    <button type="button" class="btn btn-default" ng-disabled="!formUpdateService.$valid" ng-click="UpdateService()">
+                                                        Save changes
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- box end -->
+
+                                <div>
+                                    <h4 class="modal-title">
+                                        City List
+
+                                    </h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th width="25%">City Name</th>
+                                                <th width="25%">Service Price</th>
+                                                <th width="25%">Service Time</th>
+                                                <th width="25%">Manage</th>
+                                            </tr>
+                                            <tr ng-repeat="item in serviceCityList">
+                                                <td>
+                                                    <label for="exampleInputEmail1">{{item.cityName}}</label>
+                                                </td>
+                                                <td>
+                                                    <label for="exampleInputEmail1" ng-show="!item.edit">{{item.servicePrice}}</label>
+                                                    <input type="text" class="form-control" ng-show="item.edit" ng-model="item.servicePrice" value="{{item.servicePrice}}">
+                                                </td>
+                                                <td>
+                                                    <label for="exampleInputEmail1" ng-show="!item.edit">{{item.serviceTime}}</label>
+                                                    <input type="text" class="form-control" ng-show="item.edit" ng-model="item.serviceTime" value="{{item.serviceTime}}">
+                                                </td>
+                                                <td>
+                                                    <a ng-show="item.edit" ng-click="UpdateCity(item.cityId)">
+                                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                                    </a>
+                                                    <a ng-show="item.edit" ng-click="CancelCity(item.cityId)">
+                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                    </a>
+                                                    <a ng-show="!item.edit" ng-click="EditCity(item.cityId)">
+                                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                    </a>
+                                                    <!--<button type="button" ng-show="item.edit" class="btn btn-default" ng-click="CancelCity(item.cityId)">
+                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" ng-show="!item.edit" class="btn btn-default" ng-click="EditCity(item.cityId)">
+                                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                    </button>-->
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,68 @@
+﻿<div ng-include="'App/views/header.html'"></div>
+<div class="clearfix"></div>
+<div id="dvSchedulerMap" ng-controller="schedulerMapController" ng-init="InitializeSchedulerMap()" class="popup_bottom">
+    <section class="innerBg_Box">
+        <div class="main_box">
+            <div class="search_box">
+                <form class="form-inline">
+                    <div class="form-group" style="width:100%;">
+                        <div class="input-group ">
+                            <select class="form-control" ng-change="BindBaseCenter()" ng-model="cityId">
+                                <option value="">Select City</option>
+                                <option ng-repeat="item in cities" value="{{item.id}}">{{item.name}} </option>
+                            </select>
+                        </div>
+                        <div class="input-group ">
+                            <select class="form-control" ng-model="baseCenterId" ng-change="StartSchedulerMap()">
+                                <option value="">Select BaseCenter</option>
+                                <option ng-repeat="item in basecenter" value="{{item.id}}">{{item.name}} </option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <button type="submit" class="btn btn-default pull-right" ng-click="Refresh()">Refresh</button>
+                        </div>
+                        <div class="form-group date_select_box ">
+                            <div class="middle_date_select">
+
+                                <div class="input-group">
+                                    <button type="submit" class="btn btn-default pull-right" ng-click="Previous()"><</button>
+                                </div>
+                                <div id="dvSchedulerDateSelect">
+                                    <a class="dropdown-toggle" id="dateDropdown" role="button" data-toggle="dropdown" data-target="#" href="">
+                                        <div class="input-group">
+                                            <input type="text" datepicker-popup="dd/MM/yyyy" class="form-control" ng-model="schedulerStartDate">
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-scheduler-open1" role="menu" aria-labelledby="dLabel">
+                                        <datetimepicker ng-model="schedulerStartDate" data-datetimepicker-config="{ dropdownSelector: '#dateDropdown',startView:'day', minView:'day'}" required>
+                                        </datetimepicker>
+                                    </ul>
+                                </div>
+                                <div class="input-group">
+                                    <button type="submit" class="btn btn-default pull-right" ng-click="Next()">></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <span ng-show="Spinner" us-spinner="{radius:30, width:8, length: 16,opacity: 0.25}"></span>
+           <div>
+               <div id="map" style="width: 90%; height: 300px; border: 10px solid #e8dee0;float:right;"></div>
+               <div style="float:left;width:10%;max-height:300px;overflow:scroll;">
+                   <table>
+                       <tr ng-repeat="item in stylistList">
+                           <td>{{item.name}}</td>
+                           <td>
+                               <input type="checkbox" name="chk{{item.id}}" ng-model="item.ischecked" ng-change="changeStylist({{item.id}})" ng-checked="{{item.ischecked}}" />
+                           </td>
+                       </tr>
+                   </table>
+               </div>
+
+               <div class="clearfix"></div>
+
+           </div>
+        </div>
+    </section>
+</div>

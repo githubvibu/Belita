@@ -1,0 +1,84 @@
+﻿<div ng-include="'App/views/header.html'"></div>
+<div class="clearfix"></div>
+<section class="innerBg_Box ng-scope">
+    <div ng-controller="basecenterController" ng-init="loadForm()" id="dvBasecenter">
+        <div class="main_box">
+            <div class="search_box">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <select class="form-control" ng-model="cityId" ng-change="GetBasecenterData()">
+                                <option value="0">---Select City---</option>
+                                <option ng-repeat="item in city" value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default pull-right" ng-click="CreateBasecenter()">Create New Basecenter</button>
+                </form>
+            </div>
+            <span class="success_message">{{message}}</span>
+            <span ng-show="Spinner" us-spinner="{radius:30, width:8, length: 16}"></span>
+            <div class="table-responsive">
+                <div id="jqxgrid"></div>
+            </div>
+
+            <div class="modal fade" id="dvAddBasecenter" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">
+                                Add Basecenter
+
+                            </h4>
+
+                        </div>
+                        <form name="formAddBasecenter" novalidate>
+                            <div class="modal-body">
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">City<span class="required">*</span></label>
+                                            <select class="form-control" ng-model="cityId" >
+                                                <option value="0">---Select City---</option>
+                                                <option ng-repeat="item in city" value="{{item.id}}">{{item.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Basecenter</label>
+                                            <input type="text" class="form-control" name="basecenter" ng-model="basecenter" id="" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="clearfix">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <div class="modal-footer">
+                                                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                                                    <button type="button" class="btn btn-default" ng-disabled="!formAddBasecenter.$valid" ng-click="Addbasecenter()">
+                                                        Save
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- box end -->
+                            </div>
+
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+        </div>
+    </div>
+</section>

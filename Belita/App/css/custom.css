@@ -1,0 +1,1037 @@
+body {
+    background: #ad324f;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.login_box {
+    width: 490px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+.login_box_main {
+    background: #cc3a5c;
+}
+
+.padding_margin_nill {
+    margin: 0px;
+    padding: 0px;
+}
+
+.login_bg {
+    background: #ff3161;
+    padding: 30px 50px;
+    color: #fff;
+}
+
+.flower_left {
+    position: absolute;
+    top: 0px;
+    left: -60%;
+}
+
+.flower_right {
+    position: absolute;
+    top: 0px;
+    right: -60%;
+}
+
+.footer_border {
+    border-top: 10px solid #341214;
+}
+
+.login_bg h1 {
+    font-size: 35px;
+    font-weight: 100;
+    color: #fff;
+    margin: 0px 0 20px 0;
+    padding: 0px;
+}
+
+.form-control {
+    padding: 0px 12px;
+    height: 27px;
+    font-size: 13px;
+}
+
+
+.login_bg a {
+    color: #fff;
+    text-decoration: none;
+}
+
+    .login_bg a:hover {
+        text-decoration: underline;
+    }
+
+.login_bg button {
+    width: 100%;
+    background: #ad324f;
+    border: 0px;
+    color: #fff;
+    padding: 15px;
+}
+
+    .login_bg button:hover {
+        background: #c4395a;
+        color: #fff;
+    }
+
+.login_bg .form-control {
+    padding: 15px;
+    height: 47px;
+}
+
+.form_input_box label {
+        float: left;
+    width: 34%;
+}
+
+.form_input_box .form-control {
+        float: left;
+    width: 64%;
+        margin-bottom: 4px;
+}
+
+.form_input_box .heading_box{
+    width:100%;
+}
+
+    .form_input_box .heading_box label {width:auto; float:left; margin-right:10px;
+    }
+
+.marg_bot_box { margin-bottom:20px;
+}
+.heading_font {
+    font-size: 17px;
+    margin-top: 0px;
+    font-weight: 600;
+    color: #ad324f;
+}
+
+/*dashboard */
+
+.innerBg_Box {
+    background: url(../images/inner_bg.gif) repeat;
+}
+
+header {
+    background: #080103;
+    width: 100%;
+    float: left;
+    height: 60px;
+}
+
+.inner_logo_box {
+    float: left;
+}
+
+    .inner_logo_box img {
+        width: 75.4%;
+    }
+
+.create_appointment {
+    float: left;
+    background: #ad324f;
+    display: table;
+}
+
+.display_cell {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.appointment_button {
+    background: #66081e;
+    padding: 19px 10px;
+}
+
+    .appointment_button:hover {
+        background: #551b29;
+        padding: 19px 10px;
+    }
+
+header a {
+    color: #fff;
+    text-align: center;
+}
+
+    header a:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+
+.schedule_map_box a {
+    float: left;
+    background: #66081e;
+    padding: 17px 10px;
+    margin-left: 1px;
+}
+
+    .schedule_map_box a:hover {
+        background: #551b29;
+    }
+
+.schedule_map_box span {
+    display: block;
+}
+
+header .glyphicon {
+    font-size: 18px;
+}
+
+.padding_left {
+    padding-left: 10px;
+}
+
+.nav_bar_box {
+    float: left;
+}
+
+    .nav_bar_box .navbar-default {
+        background: none;
+        border: 0px;
+        margin: 0px;
+    }
+
+        .nav_bar_box .navbar-default .navbar-nav > li > a {
+            color: #fff;
+            padding: 10px 19px;
+            font-size: 12px;
+        }
+
+            .nav_bar_box .navbar-default .navbar-nav > li > a:hover {
+                color: #fff;
+            }
+
+        .nav_bar_box .navbar-default .navbar-nav > .active > a, .nav_bar_box .navbar-default .navbar-nav > .active > a:focus, .nav_bar_box .navbar-default .navbar-nav > .active > a:hover {
+            background: #7b172e;
+            color: #fff;
+        }
+
+    .nav_bar_box .nav .nav_bar_box .open > a, .nav_bar_box .nav .open > a:focus, .nav_bar_box .nav .open > a:hover {
+        background: #7b172e !important;
+        color: #fff !important;
+    }
+
+    .nav_bar_box .dislplay_block {
+        display: block;
+    }
+
+    .nav_bar_box .container-fluid {
+        padding: 0px;
+    }
+
+    .nav_bar_box .navbar-collapse {
+        padding: 0px;
+    }
+
+.center_box {
+    display: table;
+    width: 100%;
+}
+
+.left_box {
+    width: 211px;
+    display: table-cell;
+    vertical-align: top;
+    background: #b06577;
+}
+
+    .left_box h1 {
+        color: #fff;
+        font-size: 16px;
+        font-weight: normal;
+        padding: 20px 10px;
+        margin: 0px;
+        border-bottom: #fff solid 1px;
+    }
+
+    .left_box ul {
+        margin: 0px;
+        padding: 0px;
+    }
+
+        .left_box ul li {
+            list-style: none;
+            color: #fff;
+        }
+
+            .left_box ul li a {
+                color: #fff;
+                background: #ad324f;
+                text-decoration: none;
+                padding: 30px 10px;
+                float: left;
+                width: 100%;
+                border-bottom: #66081e solid 1px;
+            }
+
+                .left_box ul li a:hover {
+                    background: #7b172e;
+                }
+
+.right_box {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.popup_bottom {
+    position: relative;
+}
+
+.scheduler_default_timeheader_float_inner {
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.spinner {
+    background-color: red !Important;
+}
+
+    .spinner div {
+        /*background:#fff !important;*/
+        background: #b06577 !important;
+    }
+
+.employee_details_box {
+    background: #e8dee0;
+    border-top: 1px solid #341214;
+    padding: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+    max-height: 400px;
+    font-size: 13px;
+    width: 100%;
+    margin: 0px;
+    /*position:absolute;
+    bottom:-100px;*/
+}
+
+    .employee_details_box .create_cancel_box {
+        text-align: right;
+            text-align: left;
+    margin: 10px 17px;
+
+    }
+
+    .employee_details_box h2 {
+        color: #7b172e;
+        margin: 0px;
+        padding: 0px;
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .employee_details_box .create_cancel_box a {
+        background: #7b172e;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 3px;
+    }
+
+        .employee_details_box .create_cancel_box a:hover {
+            background: #ad324f;
+            text-decoration: none;
+        }
+
+    .employee_details_box .service_history_box .dl-horizontal dt {
+        width: 100px;
+        text-align: left;
+    }
+
+    .employee_details_box .service_history_box .dl-horizontal dd {
+        margin-left: 100px;
+    }
+
+.service_history_box {
+    max-height: 300px;
+    overflow: auto;
+}
+
+    .service_history_box section {
+        border-bottom: 2px solid #c2b1b4;
+        margin-bottom: 20px;
+    }
+
+    .service_history_box dl {
+        margin-bottom: 0px;
+        padding: 6px;
+    }
+
+        .service_history_box dl:nth-child(odd) {
+            background: #ffffff;
+        }
+
+.employee_details_box button {
+    background: #7b172e;
+    color: #fff;
+    border: 0px;
+    padding: 3px 12px;
+}
+
+    .employee_details_box button:hover {
+        background: #ad324f;
+        color: #fff;
+    }
+
+.service_select_box table tr th {
+    background: #c7afb4;
+    color: #7b172e;
+    font-weight: 800;
+    padding: 4px;
+}
+
+.service_select_box table tr td {
+    padding: 4px;
+}
+
+
+
+.service_select_box a {
+    background: #7b172e;
+    color: #fff;
+    border-radius: 3px;
+    padding: 2px 3px;
+    font-size: 11px;
+}
+
+    .service_select_box a:hover {
+        background: #ad324f;
+        text-decoration: none;
+    }
+
+.total_box {
+    background: #a87982;
+    color: #fff;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    background: black;
+}
+
+.dropdown-menu > li > a {
+    color: #fff;
+    background: black;
+}
+
+    .dropdown-menu > li > a:hover {
+        color: #fff;
+        background: #7b172e;
+    }
+.date_select_box { width:50%;
+}
+.date_select_box .middle_date_select{
+    background: #7b172e;
+    border-radius: 5px;
+    width:166px;
+    margin:0 auto;
+        display: block;
+    height: 32px;
+    position:relative;
+}
+
+.jqx-fill-state-normal {
+    background: #7b172e !important;
+}
+
+.jqx-fill-state-hover {
+    background: #ad324f !important;
+}
+
+.jqx-dropdownlist-content {
+    color: #fff !important;
+}
+
+.input-group-addon {
+    padding: 4px 12px;
+}
+
+.jqx-tabs-title-selected-top {
+    background: #7b172e !important;
+    color: #fff !important;
+}
+
+.ng-binding input {
+    margin-right: 10px;
+}
+
+.stylist_box {
+    overflow: auto;
+    max-height: 180px;
+    overflow-x: hidden;
+}
+
+    .stylist_box .checkbox {
+        border-bottom: 1px solid #7b172e;
+        color: #7b172e;
+        float: left;
+        width: 50%;
+        margin-top: 2px;
+    }
+
+
+/*.employee_details_box .col-md-3 {
+    min-height: 300px;
+    border-right: 1px solid #7b172e;
+}*/
+#map {
+    border: 1px solid #7b172e !important;
+    padding: 2px;
+}
+/* 6/10/15 */
+.nav_bar_box {
+    /* height: 79px;*/
+}
+
+
+
+.modal-title {
+    color: #ad324f;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+
+.btn-default {
+    background: #7b172e;
+    color: #fff;
+    border: 0px;
+}
+
+    .btn-default:hover {
+        background: #ad324f;
+        color: #fff;
+        border: 0px;
+    }
+
+.close {
+    background: #000 !important;
+    opacity: 1;
+    color: #fff;
+    padding: 2px 7px !important;
+    border-radius: 50px;
+}
+
+.modal-content {
+    background: #e8dee0;
+}
+
+.modal-header {
+    border-bottom: 1px solid #d3b4ba;
+}
+
+.nav_bar_box .navbar-collapse {
+    background: #000;
+}
+
+.dropdown-menu > li > a {
+    text-align: left;
+}
+
+.panel-heading {
+    padding: 0px;
+}
+
+.panel-title > a {
+    width: 100%;
+    display: block;
+    padding: 10px;
+    color: #fff;
+    background-color: #be8a94;
+}
+
+    .panel-title > a:hover {
+        text-decoration: none;
+    }
+
+.appointment_history_box table th, .payment_history_box table th, .notification_history_box table th, .subscribed_pakage_box table th {
+    background: #f3e8ea;
+    color: #7b172e;
+}
+
+.panel-group {
+    margin: 0px;
+}
+
+
+.table-striped > tbody > tr:nth-child(odd) > td {
+    background-color: #f6f3f4;
+}
+
+
+/*07/10/15*/
+
+.search_box {
+    background: #b06577;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+
+
+.main_box {
+    padding: 10px;
+}
+
+    .main_box .table-responsive {
+        background: #e8dee0;
+        margin-top: 10px;
+    }
+
+        .main_box .table-responsive table th {
+            background: #f3e8ea;
+            color: #7b172e;
+        }
+
+        .main_box .table-responsive .glyphicon {
+            background: #7b172e;
+            padding: 6px 6px;
+            border-radius: 4px;
+            margin-right: 5px;
+            color: #fff;
+            font-size: 12px;
+            margin-top: 5px;
+            margin-left: 7px;
+        }
+
+}
+
+.main_box .table-responsive .glyphicon:hover {
+    background: #b06577;
+}
+
+
+.dropdown_multi_box .select_multi_box {
+    background: none;
+    margin-top: -5px;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.dropdown_multi_box .select_multi_box_appointment {
+    background: none;
+    margin-top: -5px;
+    width: 120%;
+}
+
+
+
+.dropdown_multi_box .select_div {
+    background: none;
+    width: 89%;
+    text-align: left;
+}
+
+.dropdown_multi_box .select_arrow {
+    background: none;
+    margin-top: 0px !important;
+    margin-left: 5% !important;
+}
+
+.servicerequired .dropdown_multi_box .select_arrow {
+    background: none;
+    margin-top: 0px !important;
+    margin-left: 4% !important;
+}
+
+    .dropdown_multi_box .select_arrow:hover {
+        background: none;
+    }
+
+
+.jqx-widget-header {
+    background: #f3e8ea !important;
+    color: #7b172e;
+}
+
+.jqx-grid-cell-hover {
+    background: #f3e8ea !important;
+}
+
+.scheduler_default_corner div {
+    display: none;
+}
+
+.scheduler_default_rowheader {
+    background: #ad324f;/* !important;*/
+    color: #fff !important;
+    border: 1px solid #66081e !important;
+}
+
+    .scheduler_default_rowheader:hover {
+        background: #66081e !important;
+    }
+
+    .scheduler_default_rowheader .scheduler_default_rowheader_inner div {
+        padding: 5px;
+    }
+
+.scheduler_default_corner {
+    background: #4e4e4e !important;
+}
+
+.scheduler_default_timeheadergroup_inner {
+    background: #4e4e4e !important;
+    color: white !important;
+}
+
+.green_border {
+    background: green;
+}
+
+.red_border {
+    background: red;
+}
+
+.grey_bg {
+    background: grey;
+    color: white;
+}
+
+.h4heading {
+    color: #ad324f;
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 1px solid #b06577;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.btn_margin_top {
+    margin-top: 24px;
+}
+
+.services_add_box {
+    background: #e8dee0;
+    width: 60%;
+    margin: 0 auto;
+    padding: 31px;
+    border: 1px solid grey;
+}
+
+.othersetting_box {
+    background: #e8dee0;
+    width: 50%;
+    margin: 0 auto;
+    padding: 31px;
+    border: 1px solid grey;
+}
+
+.btn[disabled] {
+    background: #7b172e;
+}
+
+    .btn[disabled]:hover {
+        background: #7b172e;
+    }
+
+.btnDropdown[disabled] {
+    background: #fff;
+}
+
+.select_arrow[disabled] {
+    background: #fff;
+}
+
+
+.pushnotification_box {
+    padding: 20px;
+    width: 50%;
+    margin: 0 auto;
+    border: 1px solid #e8dee0;
+}
+
+.heading_select label {
+    background: #ad324f;
+    padding: 4px 10px;
+    margin-right: 10px;
+    color: #fff;
+}
+
+.send_Entermobile label {
+    background: #ad324f;
+    padding: 4px 10px;
+    margin-right: 10px;
+    color: #fff;
+}
+
+.select_arrow {
+    color: black !important;
+    padding: 0px !important;
+}
+
+.success_message {
+    color: green;
+}
+
+.required {
+    color: red;
+}
+
+.btnDropdown {
+    height: 25px !important;
+    color: #555 !important;
+    margin-top: 0px;
+    font-size: 13px;
+    padding-top: 2px;
+}
+
+    .btnDropdown:hover {
+        background: #fff !important;
+        color: #555 !important;
+    }
+
+.dropdown_multi_box .dropdown-menu > li > a {
+    background: #fff !important;
+    color: #555 !important;
+}
+
+    .dropdown_multi_box .dropdown-menu > li > a:hover {
+        background: #fff !important;
+        color: #555 !important;
+    }
+
+.employee_details_box .dropdown-menu {
+    height: 150px;
+    overflow: scroll;
+}
+
+.discount_box .dropdown-menu {
+    height: 150px;
+    overflow: scroll;
+}
+
+#ui-id-1 {
+    height: 150px !important;
+    overflow: scroll !important;
+}
+
+.clr {
+    color: #fff !important;
+}
+
+.pac-container {
+    z-index: 1051 !important;
+}
+
+.dropdown-menu-scheduler-open
+{
+    margin-left: 40% !important;
+    margin-top: -26% !important;/*-19% !important;*/
+}
+.dropdown-menu-scheduler-open1
+{
+    /*margin-left: 40% !important;
+    margin-top: -47% !important;-47% !important;*/
+}
+
+.dropdown-menu-scheduler-open3
+{
+    margin-left: 40% !important;
+    margin-top: -56% !important;/*-47% !important;*/
+}
+
+.dropdown-menu-scheduler
+{
+    margin-left: 40% !important;
+    margin-top: -6% !important;/*-6% !important;*/
+}
+
+
+.daterpicker_margin
+{
+    margin-left: 20%;
+}
+
+.date_select_box .middle_date_select .input-group { float:left;
+}
+
+.date_select_box .middle_date_select #dvSchedulerDateSelect { float:left;     width: 100px;
+}
+
+
+.date_select_box .middle_date_select #dvSchedulerDateSelect input {
+    background: none;
+    border: 0px;
+    color: #fff;
+        text-align: center;
+}
+
+.employee_details_box .form-group
+{
+    margin-bottom:5px !important ;
+}
+.employee_details_box .form-group label
+{
+font-size: 12px;
+}
+
+/*media CSSS*/
+/* 6/10/15 */
+
+@media all and (max-width: 1380px) and (min-width: 999px) {
+
+    .create_appointment {
+        width: 100%;
+    }
+
+    .map_shedule_box {
+        float: right;
+    }
+
+    .create_app_box {
+        width: 130px;
+    }
+
+    .city_center_box {
+        width: 75%;
+    }
+
+        .city_center_box .form-group {
+            width: 49%;
+        }
+
+        .city_center_box .form-inline .form-control {
+            width: 100%;
+        }
+
+    .schedule_map_box a {
+        width: 80px;
+    }
+
+    .schedule_map_box {
+        width: 174px;
+    }
+}
+
+
+@media all and (max-width: 1000px) {
+    .nav_bar_box .navbar-toggle, .nav_bar_box .navbar-default .navbar-toggle:hover, .nav_bar_box .navbar-default .navbar-toggle:focus {
+        background: #000;
+        right: 12px;
+        top: 12px;
+    }
+
+
+    /* nav menu*/
+    .nav_bar_box .navbar-header {
+        float: none;
+    }
+
+    .nav_bar_box .navbar-left, .navbar-right {
+        float: none !important;
+    }
+
+    .nav_bar_box .navbar-toggle {
+        display: block;
+    }
+
+    .nav_bar_box .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    .nav_bar_box .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+
+    .nav_bar_box .navbar-collapse.collapse {
+        display: none !important;
+    }
+
+    .nav_bar_box .navbar-nav {
+        float: none !important;
+        margin-top: 0px;
+    }
+
+        .nav_bar_box .navbar-nav > li {
+            float: none;
+            border-bottom: 1px solid grey;
+            text-align: left;
+        }
+
+            .nav_bar_box .navbar-nav > li > a {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+    .nav_bar_box .collapse.in {
+        display: block !important;
+    }
+
+    .nav_bar_box .collapse.in {
+        background: #000;
+        z-index: 10000;
+        position: absolute;
+        width: 103%;
+    }
+
+    .nav_bar_box {
+        float: none;
+    }
+
+    .create_appointment {
+        width: 100%;
+    }
+
+    .map_shedule_box {
+        float: right;
+    }
+
+    .city_center_box .form-group {
+        float: left;
+        width: 47%;
+        margin-right: 2%;
+    }
+
+    .city_center_box {
+        width: 68%;
+        margin: 0 auto;
+    }
+
+        .city_center_box .form-group {
+            width: 45%;
+        }
+
+        .city_center_box .form-inline .form-control {
+            width: 100%;
+        }
+
+    .create_app_box {
+        width: 130px;
+    }
+
+    .schedule_map_box a {
+        width: 80px;
+    }
+
+    .schedule_map_box {
+        width: 174px;
+    }
+}
+
+
+@media all and (max-width: 1100px) and (min-width: 200px) {
+    .flower_left, .flower_right {
+        display: none;
+    }
+}
+
+/*7/10/15*/
+@media all and (max-width: 600px) and (min-width: 200px) {
+    .main_box {
+        padding: 0px;
+        margin-top: 1px;
+    }
+}

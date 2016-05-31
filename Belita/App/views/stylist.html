@@ -1,0 +1,219 @@
+﻿<div ng-include="'App/views/header.html'"></div>
+<div class="clearfix"></div>
+<section class="innerBg_Box ng-scope">
+    <div ng-controller="stylistController" ng-init="GetStylist()" id="dvStylist">
+        <div class="main_box">
+            <div class="search_box">
+
+                <form class="form-inline">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <select class="form-control" ng-model="cityId" ng-change="getBaseGroup()">
+                                <option value="">---Select City---</option>
+                                <option ng-repeat="item in cities" value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <select class="form-control" ng-model="baseCenterId" ng-change="GetStylistData()">
+                                <option value="">---Select Basecenter---</option>
+                                <option ng-repeat="item in baseCenter" value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <!--<div class="input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
+                            <input type="text" class="form-control" id="exampleInputAmount" placeholder="Search">
+                        </div>-->
+                    </div>
+                    <!--<button type="submit" class="btn btn-default" ng-click="SearchStylist()">Go</button>-->
+                    <button type="submit" ng-if="CREATE" class="btn btn-default pull-right" ng-click="CreateStylist()">Create New</button>
+                </form>
+
+            </div>
+            <span class="success_message">{{message}}</span>
+            <div class="table-responsive">
+                <span ng-show="Spinner" us-spinner="{radius:30, width:8, length: 16}"></span>
+                <div id="jqxgrid"></div>
+            </div>
+            <div class="modal fade" id="dvAddStylist" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="ClearForm()"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">{{Title}}</h4>
+                        </div>
+
+                        <form name="stylist" novalidate>
+
+                            <div class="modal-body">
+
+                                <div class="panel-body">
+
+                                    <div class="clearfix">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Stylist Username<span style="color:red">*</span></label>
+                                                <input type="text" class="form-control" name="stylistUsername" ng-model="stylistUsername" id="" placeholder="" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Stylist Name<span style="color:red">*</span></label>
+                                                <input type="text" class="form-control" name="stylistName" ng-model="stylistName" id="" placeholder="" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Stylist Email<!--<span style="color:red">*</span>--></label>
+                                                <input type="email" class="form-control" ng-model="emailId" name="emailId" >
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Stylist Password<span ng-show="id==0" style="color:red">*</span></label>
+                                                <input type="password" class="form-control" ng-model="password" id="" placeholder="" name="password" required><!--<a ng-show="showEditPassword" ng-click="editPassword()">Edit</a>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Stylist Phone Number<span style="color:red">*</span></label>
+                                                <input type="tel" class="form-control" ng-model="mobileNumber" maxlength="10" id="" placeholder="" name="mobileNumber" only-digits required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Permanent Address<!--<span style="color:red">*</span>--></label>
+
+                                                <!--<input type="text"  class="form-control" ng-model="address">-->
+                                                <textarea rows="5" class="form-control" ng-model="address" name="address" ></textarea>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInpuEtmail1">Date of joining<!--<span style="color:red">*</span>--></label>
+                                                <div>
+                                                    <!--class="dropdown"-->
+                                                    <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="">
+                                                        <div class="input-group">
+                                                            <input type="text" datepicker-popup="dd/MM/yyyy" class="form-control" ng-model="dateOfJoining">
+                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                        </div>
+                                                    </a>
+
+                                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                        <datetimepicker ng-model="dateOfJoining" data-before-render="beforeRender($view, $dates, $leftDate, $upDate, $rightDate)" data-datetimepicker-config="{ dropdownSelector: '#dropdown2',startView:'day', minView:'day'  }" required>
+                                                        </datetimepicker>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Emergency Contact<!--<span style="color:red">*</span>--></label>
+                                                <input type="tel" class="form-control" ng-model="emergencyContactNo" id="" maxlength="10" placeholder="" name="emergencyContactNo" only-digits >
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="clearfix">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Skill Set<span style="color:red">*</span></label>
+                                                <dropdown-multiselect class="dropdown_multi_box" model="StylistSkillSetId"
+                                                                      options="StylistSkillSet" text="text"></dropdown-multiselect>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Incentive Model<span style="color:red">*</span></label>
+                                                <select class="form-control" ng-model="stylistModelId" name="stylistModelId" required>
+                                                    <option value="">Select</option>
+                                                    <option ng-repeat="item in stylistModel" value="{{item.id}}">{{item.name}}</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">City<span style="color:red">*</span></label>
+                                                <select class="form-control" ng-model="cityIdAdd" ng-change="getBaseGroupAdd()" name="cityIdAdd" required>
+                                                    <option value="">Select</option>
+                                                    <option ng-repeat="item in citiesAdd" value="{{item.id}}">{{item.name}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Base Center<span style="color:red">*</span></label>
+                                                <select class="form-control" ng-model="baseCenterIdAdd" name="baseCenterIdAdd" required>
+                                                    <option value="">Select</option>
+                                                    <option ng-repeat="item in baseCenterAdd" value="{{item.id}}">{{item.name}}</option>
+                                                </select>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <!--<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ClearForm()">Close</button>-->
+                                <button type="button" class="btn btn-default" ng-disabled="stylist.stylistUsername.$error.required||
+                                                          stylist.stylistName.$error.required||
+                                                          stylist.mobileNumber.$error.required||(stylist.password.$error.required && stylist.password.$error.valid && id==0 )||
+                                                          stylist.stylistModelId.$error.required||
+                                                          stylist.cityIdAdd.$error.required||
+                                                          stylist.baseCenterIdAdd.$error.required||StylistSkillSetId.length==0" ng-click="SaveStylist()">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="dvStylistDetail" data-backdrop="static">
+                <div class="modal-dialog" style="width:100%;" >
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="ClearForm()"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Stylist Appointment History</h4>
+                            
+                        </div>
+                        <form name="stylistDetail" novalidate>
+                            <div class="modal-body">
+                                <div class="panel-body">
+                                    <div class="input-group pull-right">
+                                        <button class="btn btn-default" style="height:32px" ng-show="showExportToExcel" id='excelExport' ng-click="ExportToExcel()">Export to Excel</button>
+                                    </div>
+                                    <div id="jqxgridStylistDetail"></div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Belita</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://rawgit.com/dalelotts/angular-bootstrap-datetimepicker/master/src/css/datetimepicker.css" />
+    <link href="/JqxStyles/jqx.base.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300italic,400italic' rel='stylesheet' type='text/css'>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/angular-route.js"></script>
+    <script src="../Scripts/angular-cookies.min.js"></script>
+    <script src="app.js"></script>
+    <script src="services/discountService.js"></script>
+    <script src="services/authService.js"></script>
+    <script src="services/stylistService.js"></script>
+
+    <script src="controllers/homeController.js"></script>
+    <script src="controllers/dashboardController.js"></script>
+    <script src="controllers/mainController.js"></script>
+    <script src="controllers/appController.js"></script>
+    <script src="controllers/discountController.js"></script>
+    <script src="controllers/stylistController.js"></script>
+    <script src="https://rawgit.com/dalelotts/angular-bootstrap-datetimepicker/master/src/js/datetimepicker.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+</head>
+<body ng-controller="appController">
+    <div class="container-fluid padding_margin_nill">
+        <div data-ui-view></div>
+        <section class="innerBg_Box">
+            <header>
+                <div class="inner_logo_box"><img src="images/inner_lgo.jpg" width="211" height="79"></div>
+                <!-- nav -->
+                <div class="nav_bar_box">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+
+                            </div>
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="#"><span class="glyphicon glyphicon-edit dislplay_block" aria-hidden="true"></span> <span class="dislplay_block">Appointments</span></a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-th dislplay_block" aria-hidden="true"></span> <span class="dislplay_block">Customer Management </span></a></li>
+                                    <li><a href="#/discount"><span class="glyphicon glyphicon-tag dislplay_block" aria-hidden="true"></span> <span class="dislplay_block">Discount Engine </span></a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-list-alt dislplay_block" aria-hidden="true"></span> <span class="dislplay_block">Report</span></a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-tasks dislplay_block" aria-hidden="true"></span> <span class="dislplay_block">Master Configuration</span></a></li>
+                                </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container-fluid -->
+                    </nav>
+                </div>
+            </header>
+            <div class="clearfix"></div>
+            <div ng-view>
+            </div>
+        </section>
+        <footer class="footer_border">fasdf</footer>
+    </div>
+
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!--<script type="text/javascript" src="/JqxScripts/jquery-1.11.1.min.js"></script>-->
+    <script type="text/javascript" src="/JqxScripts/jqxcore.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxbuttons.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxmenu.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxgrid.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxgrid.grouping.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxeditor.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxcolorpicker.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxtooltip.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxwindow.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxlistbox.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxdata.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxdata.export.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxgrid.export.js"></script>
+    <script type="text/javascript" src="/JqxScripts/jqxangular.js"></script>
+    <script type="text/javascript" src="/JqxScripts/demos.js"></script>
+</body>
+</html>

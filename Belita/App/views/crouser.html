@@ -1,0 +1,138 @@
+﻿<div ng-include="'App/views/header.html'"></div>
+<div class="clearfix"></div>
+<section class="innerBg_Box ng-scope">
+    <div ng-controller="crouserController" ng-init="GetUser()" id="dvCroUser">
+        <div class="main_box">
+            <div class="search_box clearfix">
+                <form class="form-inline">
+                    <div class="form-group pull-right">
+
+                        <div class="input-group">
+                            <button type="submit" ng-show="CREATE" class="btn btn-default pull-right" ng-click="CreateCroUser()">Create User</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <span class="success_message">{{message}}</span>
+            <div class="table-responsive">
+                <span ng-show="Spinner" us-spinner="{radius:30, width:8, length: 16}"></span>
+                <div ng-show="VIEW" id="jqxgrid"></div>
+            </div>
+            <div class="modal fade" id="dvAddCroUSer" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="ClearForm()"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">{{Title}}</h4>
+                        </div>
+
+                        <form name="crouser" novalidate>
+
+                            <div class="modal-body">
+                                <div class="panel-body">
+                                    <div class="clearfix">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Username<span style="color:red">*</span></label>
+                                                <input type="text" class="form-control" name="CroUser" ng-model="CroUserName" id="" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Roles<span style="color:red">*</span> </label>
+                                                <select name="CroRoles" class="form-control" ng-model="RoleId">
+                                                    <option value="">--Select--</option>
+                                                    <option value="1">Admin</option>
+                                                    <option value="2">Executive</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Password<span style="color:red">*</span></label>
+                                                <input type="password" class="form-control" ng-required={{required}} name="CroPassword" ng-model="Password" id="" placeholder="">
+                                            </div>
+                                        </div>
+                                        <!--<div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Confirm Password<span style="color:red">*</span></label>
+                                                <input type="text" class="form-control" compare-to="Password" name="CroConfirmPassword" ng-model="ConfirmPassword" id="" placeholder="" required>
+                                            </div>
+                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" ng-disabled="!crouser.$valid " ng-click="SaveCroUser()">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="dvEditCroUSer" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="ClearForm()"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">{{Title}}</h4>
+                        </div>
+
+                        <form name="crouseredit" autocomplete="off" novalidate>
+
+                            <div class="modal-body">
+                                <div class="panel-body">
+                                    <div class="clearfix">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Username<span style="color:red">*</span></label>
+                                                <input type="text" class="form-control" name="CroUserEdit" ng-model="CroUserName" id="" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Roles<span style="color:red">*</span> </label>
+                                                <select name="CroRolesEdit" class="form-control" ng-model="RoleId" required>
+                                                    <option value="">--Select--</option>
+                                                    <option value="1">Admin</option>
+                                                    <option value="2">Executive</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Password</label>
+                                                <input type="password" class="form-control" autocomplete="off" name="CroPasswordEdit" ng-model="Password" id="" placeholder="">
+                                            </div>
+                                        </div>
+                                        <!--<div class="col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Confirm Password<span style="color:red">*</span></label>
+                            <input type="text" class="form-control" compare-to="Password" name="CroConfirmPassword" ng-model="ConfirmPassword" id="" placeholder="" required>
+                        </div>
+                    </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" ng-disabled="!crouseredit.$valid " ng-click="SaveCroUser()">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

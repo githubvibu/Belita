@@ -1,0 +1,377 @@
+﻿<div ng-include="'App/views/header.html'"></div>
+<div class="clearfix"></div>
+<section class="innerBg_Box">
+    <div ng-controller="manageAppointmentController" ng-init="InitAppointment()" id="dvAppointment">
+        <div class="main_box">
+            <div class="search_box">
+
+                <form class="form-inline">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <select class="form-control" ng-model="cityId" ng-change="getAppointment()">
+                                <option value="">Select City</option>
+                                <option ng-repeat="item in city" value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <!--<button type="submit" class="btn btn-default pull-right" ng-click="ShowUpdateAppointmentModel()">Create New</button>-->
+                    </div>
+                    <div class="input-group form-group ">
+                        <button type="submit" class="btn btn-default pull-right" ng-click="Refresh()">Refresh</button>
+                    </div>
+                </form>
+
+            </div>
+
+            <span class="success_message">{{message}}</span>
+            <div class="table-responsive">
+                <span ng-show="Spinner" us-spinner="{radius:30, width:8, length: 16}"></span>
+                <!--<div id="jqxgrid"></div>-->
+
+
+                <div id='jqxTabs' ng-show="citySelected">
+                    <ul>
+                        <li style="margin-left: 30px;">
+                            Today's Appointment
+                        </li>
+                        <li>
+                            Future Appointment (Excluding today)
+                        </li>
+                    </ul>
+                    <div style="overflow: hidden;">
+                        <div style="border:none;" id="jqxgrid">
+                        </div>
+                    </div>
+                    <div style="overflow: hidden;">
+                        <div style="border:none;" id="jqxgrid2"></div>
+                    </div>
+                </div>
+
+                <div class="container-fluid employee_details_box" style="z-index:111;">
+                    <div class="col-sm-3 col-md-3">
+                        <h2>Stylist List</h2>
+                        <!--<div style="margin:1px">
+                            
+                            <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="" style="overflow: hidden; height:initial">
+                                <div class="input-group">
+                                    <input type="text" datepicker-popup="dd/MM/yyyy" class="form-control" ng-model="selectedDate" style="height:31px">
+                                    <span class="input-group-addon" style="padding:0px;"><i class="glyphicon glyphicon-calendar" style="margin-top: 0px;"></i></span>
+                                </div>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="overflow: hidden; height: initial">
+                                <datetimepicker ng-model="selectedDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2',startView:'day', minView:'day'  }" required>
+                                </datetimepicker>
+
+                            </ul>
+                        </div>-->
+
+                        <select class="form-control" ng-model="baseCenterStylistId" ng-change="getStylistList()">
+                            <option value="">Select BaseCenter</option>
+                            <option ng-repeat="item in baseCenterStylist" value="{{item.id}}">{{item.name}}</option>
+                        </select>
+
+                        <div class="stylist_box">
+                            <div class="checkbox" ng-repeat="item in stylistList">
+                                <label><input type="checkbox" ng-change="checkboxStylistChange()" ng-model="item.isChecked" name="checkbox">{{item.name}}</label>
+                            </div><!--ng-value="item.id"  ng-checked="selection.indexOf(item.id) > -1"-->
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="service_history_box" style="display:none" >
+                            <div ng-repeat="item in stylistDetail">
+                                <h2 style="cursor: pointer;" ng-click="stylistLocation(item.id,true)">{{item.name}}({{selectedDate | date: "dd/MM/yyyy"}})<!--({{item.schedule[0].startTime | date: "dd/MM/yyyy"}})--></h2>
+                                <table ng-repeat="items in item.schedule">
+                                    <tr>
+                                        <td>{{items.startTime | date: "HH:mm"}}</td>
+                                        <td>-</td>
+                                        <td>{{items.endTime | date: "HH:mm"}}</td>
+                                        <td>
+                                            <a target="_self" style="cursor: pointer;" ng-click="stylistLocation(items.id,false)">Location</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <div id="map" style="width: 100%; height: 300px; border: 10px solid #e8dee0;"></div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal fade" id="dvEditAppointment" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">
+                                Update Appointment
+                            </h4>
+
+                        </div>
+                        <form name="formAppointment" novalidate>
+                            <div class="modal-body">
+                                <!-- box -->
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Customer Name</label>
+                                            <input type="text" class="form-control" name="customerName" ng-model="customerName" id="" placeholder="" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInpuEtmail1">Customer Address</label>
+                                            <input type="text" class="form-control" name="customerAddress" ng-model="customerAddress" id="" placeholder="" disabled>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- box start -->
+                                <div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Mobile Number</label>
+                                            <input type="text" class="form-control" name="mobileNumber" ng-model="mobileNumber" id="" placeholder="" only-digits disabled>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email</label>
+                                            <input type="text" class="form-control" name="email" ng-model="email" id="" placeholder="" disabled>
+                                            <!--<span style="color:white" ng-show="DiscTypeId==1 && formDiscount.voucherPrefix.$error.required">Voucher prefix is required</span>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- box end -->
+                                <!-- box start -->
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">City<span style="color:red">*</span></label>
+                                            <select class="form-control" name="cityIdAdd" ng-change="getBaseGroup()" ng-model="cityIdAdd" required>
+                                                <option value="">Select</option>
+                                                <option data-ng-repeat="item in cityAdd" value="{{item.id}}">{{item.name}}</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Base Center<!--<span style="color:red">*</span>--></label>
+                                            <select class="form-control" name="baseCenterId" ng-change="getStylistData()" ng-model="baseCenterId">
+                                                <option value="">Select</option>
+                                                <option data-ng-repeat="item in baseCenter" value="{{item.id}}">{{item.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- box end -->
+                                <!-- box start -->
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Stylist<!--<span style="color:red">*</span>--></label>
+                                            <select class="form-control" name="stylistId" ng-model="stylistId">
+                                                <!--required-->
+                                                <option value="0">Select</option>
+                                                <option data-ng-repeat="item in stylist" value="{{item.id}}">{{item.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Appointment Status<span style="color:red">*</span></label>
+                                            <select class="form-control" name="appointmentStatusId" ng-model="appointmentStatusId" required>
+                                                <option value="">Select</option>
+                                                <option data-ng-repeat="item in appointmentStatusList" value="{{item.id}}">{{item.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- box end -->
+
+
+                                <div class="clearfix">
+                                    <div class="col-sm-6 col-md-6">
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" ng-disabled="!formAppointment.$valid" ng-click="updateAppointment()">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- box end -->
+
+
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+
+
+            <div class="modal fade" id="dvAppointmentDetail" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">
+                                Appointment Detail
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="clearfix">
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>Appointment ID:-</span>
+                                        <label>{{appId}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>Booking Date:-</span>
+                                        <label>{{appBookTime}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>Customer Name:-</span>
+                                        <label>{{appCustomerName}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>Mobile:-</span>
+                                        <label>{{appMobile}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>Start Time:-</span>
+                                        <label>{{appStartTime}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>End Time:-</span>
+                                        <label>{{appEndTime}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>Appointment Status:-</span>
+                                        <label>{{appStatus}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>
+                                            Total Cost:-
+                                        </span>
+                                        <label>{{appTotalCost}}</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>Services:-</span>
+                                        <label>{{appServices}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>Payment:-</span>
+                                        <label>{{appPayment}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>Notes:-</span>
+                                        <label>{{appDetailNotes}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>Sp Req:-</span>
+                                        <label>{{appSpReq}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>Booking Source:-</span>
+                                        <label>{{appBookingSourcde}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>Discount Code:-</span>
+                                        <label>{{appDiscountCode}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>Created By:-</span>
+                                        <label>{{appCreatedBy}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>Modified By:-</span>
+                                        <label>{{appModifiedBy}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>{{PaytmTransactionIdText}}</span>
+                                        <label>{{transactionId}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <span>{{PaytmTransactionAmountText}}</span>
+                                        <label>{{transactionAmount}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $('.employee_details_box').resizable({
+            handles: 'n,w,s,e',
+            minWidth: 200,
+            maxWidth: 400
+        });
+    });
+</script>

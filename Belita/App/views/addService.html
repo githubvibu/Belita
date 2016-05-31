@@ -1,0 +1,179 @@
+﻿<div ng-include="'App/views/header.html'"></div>
+<div class="clearfix"></div>
+<section class="innerBg_Box">
+    <div ng-controller="serviceController" ng-init="GetService()" id="dvService">
+        <div class="main_box">
+
+            <div class="services_add_box">
+                <h4 class="h4heading">Add Service</h4>
+                <span class="success_message">{{message}}</span>
+                <span ng-show="Spinner" us-spinner="{radius:30, width:8, length: 16}"></span>
+                <form name="createService">
+                    <div class="services_form_box">
+                        <div class="clearfix">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Service Name<span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" name="serviceName" ng-model="serviceName" id="" placeholder="" required>
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Service Description</label>
+                                    <input type="text" class="form-control" name="serviceDescription" ng-model="serviceDescription" id="" placeholder="" >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Service Category<span style="color:red">*</span></label>
+                                    <select class="form-control" ng-model="serviceCategoryID" name="serviceCategoryID" ng-change="ServiceCategoryChange()" required>
+                                        <option value="">Select</option>
+                                        <option ng-repeat="item in serviceCategory" value="{{item.id}}">{{item.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Product Service Type<span style="color:red">*</span></label>
+                                    <select class="form-control" ng-change="GetProductServiceCategory()" ng-model="productServiceTypeId" name="productServiceTypeId" required>
+                                        <option value="">Select</option>
+                                        <option ng-repeat="item in productServiceType" value="{{item.id}}">{{item.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="clearfix">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group" ng-show="serviceCategoryID==7">
+                                    <label for="exampleInputEmail1">Belita Money<span style="color:red">*</span></label>
+                                    <input type="text" ng-required='serviceCategoryID==7' class="form-control" ng-model="belitaMoney" only-digits required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group" ng-show="serviceCategoryID==7">
+                                    <label for="exampleInputEmail1">Belita Money Validity(In-Month)<span style="color:red">*</span></label>
+                                    <input type="text" ng-required='serviceCategoryID==7' class="form-control" ng-model="belitaMoneyValidity" only-digits required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix" ng-show="productServiceTypeId!=1 && productServiceTypeId!='' && productServiceTypeId!=undefined">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Product Service Category<span style="color:red">*</span></label>
+                                    <!--<select ng-required='productServiceTypeId!=1 && productServiceTypeId!=""' class="form-control" ng-model="productCategoryID" name="productCategoryID" ng-options="cat.id as cat.name for cat in productCategory">
+                                        <option value="">Select</option>
+                                    </select>-->
+                                    <dropdown-multiselect class="dropdown_multi_box" model="productCategoryIDArray"
+                                                          options="productCategoryArray" text="text"></dropdown-multiselect>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Applicable for App</label>
+                                    <input type="checkbox" ng-model="isvalidOnApp" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div class="col-sm-8 col-md-8"> </div>
+                            <div class="col-sm-4 col-md-4">
+
+                                <button type="button" class="btn btn-default" ng-disabled="!createService.$valid" ng-click="SaveProductService()" ng-if="CREATE">
+                                    Save Service
+                                </button>
+                                <!---->
+                                <button type="button" class="btn btn-default" ng-click="GoToService()">Cancel</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+
+                <form name="AddService">
+                    <h4 class="h4heading">Associate city</h4>
+                    <div class="table-responsive AddService_box">
+                        <div class="clearfix">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Category<span style="color:red">*</span></label>
+                                    <select class="form-control" ng-change="GetServiceName()" ng-model="serviceCityCategoryID" name="serviceCityCategoryID" required>
+                                        <option value="">Select</option>
+                                        <option ng-repeat="item in serviceCategory" value="{{item.id}}">{{item.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Service<span style="color:red">*</span></label>
+                                    <select class="form-control" ng-model="cityProductServiceID" name="cityProductServiceID" required>
+                                        <option value="">Select</option>
+                                        <option ng-repeat="item in cityProductService" value="{{item.id}}">{{item.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">City<span style="color:red">*</span></label>
+                                    <select class="form-control" ng-model="serviceCityID" name="serviceCityID" required>
+                                        <option value="">Select</option>
+                                        <option ng-repeat="item in serviceCity" value="{{item.id}}">{{item.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Service Price<span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" name="servicePrice" ng-model="servicePrice" id="" placeholder="" only-digits required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Service Time<span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" name="serviceTime" ng-model="serviceTime" id="" placeholder="" only-digits required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">&nbsp; </label>
+                                    <button type="button" class="btn btn-default btn_margin_top" ng-disabled="AddService.serviceCityID.$error.required||
+                                AddService.servicePrice.$error.required || AddService.serviceCityCategoryID.$error.required || AddService.cityProductServiceID.$error.required ||  AddService.serviceTime.$error.required" ng-if="CREATE" ng-click="AddCity()">
+                                        Associate city
+                                    </button>
+                                    <!--AddService.serviceTime.$error.required||-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix">
+                            <div class="col-sm-6 col-md-6">
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</section>
+
+

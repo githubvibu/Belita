@@ -1,0 +1,106 @@
+﻿<header ng-controller="headerController" ng-init="GetRoles()">
+    <div class="inner_logo_box"><img src="App/images/inner_lgo.jpg"></div>
+    <!-- nav -->
+    <div class="nav_bar_box">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <!--<li>
+                        <a href="#/scheduler"><span class="glyphicon glyphicon-edit dislplay_block" aria-hidden="true"></span> <span class="dislplay_block">Appointments</span></a></li>-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-tag dislplay_block" aria-hidden="true"></span> <span class="dislplay_block">Appointment<span class="caret"></span> </span> </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#/unassignedappointment">Unassigned Appointment</a></li>
+                                <li><a href="#/manageappointment">Manage Appointment</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="#/customer"><span class="glyphicon glyphicon-th dislplay_block" aria-hidden="true"></span> <span class="dislplay_block">Customer Management </span></a></li>
+                        <li><a href="#/discount"><span class="glyphicon glyphicon-tag dislplay_block" aria-hidden="true"></span> <span class="dislplay_block">Discount Engine </span></a></li>
+                        <li class="dropdown">
+                            <!--<a href="#/report">
+                                <span class="glyphicon glyphicon-list-alt dislplay_block" aria-hidden="true"></span>
+                                <span class="dislplay_block">Report</span>
+                            </a>-->
+                            <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-tag dislplay_block" aria-hidden="true"></span> <span class="dislplay_block">View Report<span class="caret"></span> </span> </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#/report">
+                                        <!--<span class="glyphicon glyphicon-list-alt dislplay_block" aria-hidden="true"></span>-->
+                                        <span class="dislplay_block">Report</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#/salesreport">
+                                        <span class="dislplay_block">Sales Report</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#/feedbackreport">
+                                        <span class="dislplay_block">Feedback Report</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#/pettycashreport">
+                                        <span class="dislplay_block">PettyCash Report</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#/revenuereportbyservice">
+                                        <span class="dislplay_block">Revenue Report By Service</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#/membershipreport">
+                                        <span class="dislplay_block">Membership Report</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#/stylistattendencereport">
+                                        <span class="dislplay_block">Stylist Attendence Report</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#/birthdayanniversary">
+                                        <span class="dislplay_block">Birthday And Anniversary</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--<li class="dropdown" ><a href="#" target="_self" ><span class="glyphicon glyphicon-tasks dislplay_block" aria-hidden="true"></span> <span class="dislplay_block">Master Configuration</span></a></li>-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-tag dislplay_block" aria-hidden="true"></span> <span class="dislplay_block">Master Configuration<span class="caret"></span> </span> </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#/discount">Manage Discount</a></li>
+                                <li><a href="#/stylist">Manage Stylist</a></li>
+                                <li><a href="#/group">Manage Group</a></li>
+                                <li><a href="#/service">Manage Service</a></li>
+                                <li ng-show="VIEWNOTIFICATION"><a href="#/pushnotification">Manage Notification</a></li>
+                                <li><a href="#/faq">Manage FAQ</a></li>
+                                <li><a href="#/stylistSchedule">Stylist Schedule</a></li>
+                                <li><a href="#/othersettings">Other Settings</a></li>
+                                <li><a href="#/appdetails">View Appointment</a></li>
+                                <li ng-show="VIEW"> <a href="#/CroUser">Manage Cro-User</a></li>
+                            </ul>
+                        </li>
+                        <li><a ng-click="Logout()"><span class="glyphicon glyphicon-log-out dislplay_block" aria-hidden="true"></span> <span class="dislplay_block">Logout</span></a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+
+</header>

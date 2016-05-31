@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Belita</title>
+
+    <!-- Bootstrap -->
+    
+    <link href="App/css/bootstrap.min.css" rel="stylesheet">
+    <link href="App/css/custom.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="https://rawgit.com/dalelotts/angular-bootstrap-datetimepicker/master/src/css/datetimepicker.css" />-->
+    <link href="App/css/datetimepicker.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" />-->
+    <link href="App/css/jquery-ui.css" rel="stylesheet" />
+    <link href="./JqxStyles/jqx.base.css" rel="stylesheet" />
+    <link href="App/css/elements.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300italic,400italic' rel='stylesheet' type='text/css'>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+    <script src="App/js/jquery.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>-->
+    <script src="App/js/moment2-8-3.min.js"></script>
+
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-cookies.min.js"></script>-->
+    <script src="Scripts/angular-1-4.min.js"></script>
+    <script src="Scripts/angular-cookies-1-4.min.js"></script>
+    <script src="./Scripts/angular-route.js"></script>
+    <!--<script src="./Scripts/angular.js"></script>-->
+    <!--<script src="./Scripts/angular-route.js"></script>-->
+    <!--<script src="./Scripts/angular-cookies.min.js"></script>-->
+    <script type="text/javascript" src="http://fgnass.github.io/spin.js/spin.min.js"></script>
+
+    <script src="App/js/FileSaver.js"></script>
+    <script src="./Scripts/angular-spinner.min.js"></script>
+    <script src="App/app.js"></script>
+    <script src="App/services/discountService.js"></script>
+    <script src="App/services/authService.js"></script>
+    <script src="App/services/stylistService.js"></script>
+    <script src="App/services/groupService.js"></script>
+    <script src="App/services/schedulerService.js"></script>
+    <script src="App/services/commonService.js"></script>
+    <script src="App/services/pushnotificationService.js"></script>
+    <script src="App/services/manageAppointmentService.js"></script>
+    <script src="App/services/service.js"></script>
+    <script src="App/services/faqService.js"></script>
+    <script src="App/services/stylistScheduleService.js"></script>
+    <script src="App/services/customerService.js"></script>
+    <script src="App/services/otherSettingsService.js"></script>
+    <script src="App/services/basecenterService.js"></script>
+    <script src="App/services/appointmentDetailsService.js"></script>
+    <script src="App/services/reportService.js"></script>
+    <script src="App/services/crouserService.js"></script>
+
+    <script src="App/controllers/homeController.js"></script>
+    <script src="App/controllers/otherSettingsController.js"></script>
+    <script src="App/controllers/dashboardController.js"></script>
+    <script src="App/controllers/mainController.js"></script>
+    <script src="App/controllers/appController.js"></script>
+    <script src="App/controllers/discountController.js"></script>
+    <script src="App/controllers/stylistController.js"></script>
+    <script src="App/controllers/groupController.js"></script>
+    <script src="App/controllers/schedulerController.js"></script>
+    <script src="App/controllers/headerController.js"></script>
+    <script src="App/controllers/pushnotificationController.js"></script>
+    <script src="App/controllers/serviceController.js"></script>
+    <script src="App/controllers/manageAppointmentController.js"></script>
+    <script src="App/controllers/faqController.js"></script>
+    <script src="App/controllers/stylistScheduleController.js"></script>
+    <script src="App/controllers/customerController.js"></script>
+    <script src="App/controllers/basecenterController.js"></script>
+    <script src="App/controllers/appointmentDetailsController.js"></script>
+    <script src="App/controllers/appointmentDetailsController.js"></script>
+    <script src="App/controllers/reportController.js"></script>
+    <script src="App/controllers/crouserController.js"></script>
+    <script src="App/controllers/salesReportController.js"></script> 
+    <script src="App/controllers/feedbackReportController.js"></script>
+    <script src="App/controllers/pettycashReportController.js"></script>
+    <script src="App/controllers/revenueReportByServiceController.js"></script>
+    <script src="App/controllers/stylistAttendenceReportController.js"></script>
+    <script src="App/controllers/membershipReportController.js"></script>
+    <script src="App/controllers/birthdayAnniversaryController.js"></script>
+    <!--<script src="App/controllers/schedulerMapController.js"></script>-->
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+    
+    <!--<script src="https://rawgit.com/dalelotts/angular-bootstrap-datetimepicker/master/src/js/datetimepicker.js"></script>-->
+    <script src="App/js/datetimepicker.js"></script>
+    <!--<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>-->
+    <script src="./Scripts/ui-bootstrap-tpls-0.11.0.js"></script>
+    <!--<script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>-->
+    <!--<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>-->
+    <script src="App/js/jquery-ui.min.js"></script>
+    <script src="App/js/daypilot-all.min.js"></script>
+</head>
+<body ng-controller="appController">
+    <div class="container-fluid padding_margin_nill">
+        <div ng-view>
+        </div>
+        <footer class="footer_border"></footer>
+    </div>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="App/js/bootstrap.min.js"></script>
+    <!--<script type="text/javascript" src="/JqxScripts/jquery-1.11.1.min.js"></script>-->
+    <script type="text/javascript" src="./JqxScripts/jqxcore.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxbuttons.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxmenu.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxgrid.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxgrid.grouping.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxeditor.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxcolorpicker.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxtooltip.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxwindow.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxlistbox.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxdata.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxdata.export.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxgrid.export.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxangular.js"></script>
+    <script type="text/javascript" src="./JqxScripts/demos.js"></script>
+    <script type="text/javascript" src="./JqxScripts/jqxtabs.js"></script>
+
+    <script type="text/javascript" src="./JqxScripts/jqxgrid.aggregates.js"></script>
+
+</body>
+</html>
