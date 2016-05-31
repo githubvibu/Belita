@@ -797,7 +797,7 @@ function main($scope, $routeParams, $location, schedulerService, commonService, 
         }
         if (!$scope.isCashBack)
             amount -= $scope.discountAmount == undefined ? 0 : $scope.discountAmount;
-        amount += amount * (14.5 / 100);
+        amount += amount * (15 / 100); //(14.5 / 100);
         amount += $scope.premiumAmount;
         if ($scope.selectedServicesIds.length > 0)
             $scope.totalAmountWithTax = Math.round(amount);
@@ -813,7 +813,7 @@ function main($scope, $routeParams, $location, schedulerService, commonService, 
             amount += $scope.selectedServicesListWithPrice[i].price;
         }
         amount -= $scope.discountAmount == undefined ? 0 : $scope.discountAmount;
-        amount = amount * (14.5 / 100);
+        amount = amount * (15 / 100); //(14.5 / 100);
         return amount;
     };
 
