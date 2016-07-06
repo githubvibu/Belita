@@ -729,11 +729,14 @@ header .glyphicon {
 
 .btn[disabled] {
     background: #494949!important;
+    opacity: 1!important;
 }
 
     .btn[disabled]:hover {
         background: #494949!important;
+        opacity: 1!important;
     }
+
 
 .btnDropdown[disabled] {
     background: #fff;
