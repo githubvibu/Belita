@@ -1,5 +1,5 @@
 body {
-    background: #ad324f;
+    background: #808080;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -12,7 +12,7 @@ body {
 }
 
 .login_box_main {
-    background: #cc3a5c;
+    background: #888888;
 }
 
 .padding_margin_nill {
@@ -21,7 +21,7 @@ body {
 }
 
 .login_bg {
-    background: #ff3161;
+    background: #ed1c24;
     padding: 30px 50px;
     color: #fff;
 }
@@ -39,7 +39,7 @@ body {
 }
 
 .footer_border {
-    border-top: 10px solid #341214;
+    border-top: 10px solid #151515;
 }
 
 .login_bg h1 {
@@ -68,14 +68,14 @@ body {
 
 .login_bg button {
     width: 100%;
-    background: #ad324f;
+    background: #494949;
     border: 0px;
     color: #fff;
     padding: 15px;
 }
 
     .login_bg button:hover {
-        background: #c4395a;
+        background: #494949;
         color: #fff;
     }
 
@@ -108,7 +108,7 @@ body {
     font-size: 17px;
     margin-top: 0px;
     font-weight: 600;
-    color: #ad324f;
+    color: #ed1c24;
 }
 
 /*dashboard */
@@ -129,12 +129,12 @@ header {
 }
 
     .inner_logo_box img {
-        width: 75.4%;
+        width: 99.4%;
     }
 
 .create_appointment {
     float: left;
-    background: #ad324f;
+    background: #ed1c24;
     display: table;
 }
 
@@ -208,12 +208,12 @@ header .glyphicon {
             }
 
         .nav_bar_box .navbar-default .navbar-nav > .active > a, .nav_bar_box .navbar-default .navbar-nav > .active > a:focus, .nav_bar_box .navbar-default .navbar-nav > .active > a:hover {
-            background: #7b172e;
+            background: #ed1c24;
             color: #fff;
         }
 
     .nav_bar_box .nav .nav_bar_box .open > a, .nav_bar_box .nav .open > a:focus, .nav_bar_box .nav .open > a:hover {
-        background: #7b172e !important;
+        background: #ed1c24 !important;
         color: #fff !important;
     }
 
@@ -262,7 +262,7 @@ header .glyphicon {
 
             .left_box ul li a {
                 color: #fff;
-                background: #ad324f;
+                background: #ed1c24;
                 text-decoration: none;
                 padding: 30px 10px;
                 float: left;
@@ -271,7 +271,7 @@ header .glyphicon {
             }
 
                 .left_box ul li a:hover {
-                    background: #7b172e;
+                    background: #ed1c24;
                 }
 
 .right_box {
@@ -320,7 +320,7 @@ header .glyphicon {
     }
 
     .employee_details_box h2 {
-        color: #7b172e;
+        color: #ed1c24;
         margin: 0px;
         padding: 0px;
         font-weight: 600;
@@ -329,14 +329,14 @@ header .glyphicon {
     }
 
     .employee_details_box .create_cancel_box a {
-        background: #7b172e;
+        background: #ed1c24;
         color: #fff;
         padding: 10px 20px;
         border-radius: 3px;
     }
 
         .employee_details_box .create_cancel_box a:hover {
-            background: #ad324f;
+            background: #ed1c24;
             text-decoration: none;
         }
 
@@ -369,20 +369,20 @@ header .glyphicon {
         }
 
 .employee_details_box button {
-    background: #7b172e;
+    background: #ed1c24;
     color: #fff;
     border: 0px;
     padding: 3px 12px;
 }
 
     .employee_details_box button:hover {
-        background: #ad324f;
+        background: #ed1c24;
         color: #fff;
     }
 
 .service_select_box table tr th {
     background: #c7afb4;
-    color: #7b172e;
+    color: #ed1c24;
     font-weight: 800;
     padding: 4px;
 }
@@ -394,7 +394,7 @@ header .glyphicon {
 
 
 .service_select_box a {
-    background: #7b172e;
+    background: #ed1c24;
     color: #fff;
     border-radius: 3px;
     padding: 2px 3px;
@@ -402,12 +402,12 @@ header .glyphicon {
 }
 
     .service_select_box a:hover {
-        background: #ad324f;
+        background: #ed1c24;
         text-decoration: none;
     }
 
 .total_box {
-    background: #a87982;
+    background: #494949;
     color: #fff;
 }
 
@@ -422,12 +422,12 @@ header .glyphicon {
 
     .dropdown-menu > li > a:hover {
         color: #fff;
-        background: #7b172e;
+        background: #ed1c24;
     }
 .date_select_box { width:50%;
 }
 .date_select_box .middle_date_select{
-    background: #7b172e;
+    background: #494949;
     border-radius: 5px;
     width:166px;
     margin:0 auto;
@@ -437,11 +437,11 @@ header .glyphicon {
 }
 
 .jqx-fill-state-normal {
-    background: #7b172e !important;
+    background: #ed1c24 !important;
 }
 
 .jqx-fill-state-hover {
-    background: #ad324f !important;
+    background: #ed1c24 !important;
 }
 
 .jqx-dropdownlist-content {
@@ -453,7 +453,7 @@ header .glyphicon {
 }
 
 .jqx-tabs-title-selected-top {
-    background: #7b172e !important;
+    background: #ed1c24 !important;
     color: #fff !important;
 }
 
@@ -468,8 +468,8 @@ header .glyphicon {
 }
 
     .stylist_box .checkbox {
-        border-bottom: 1px solid #7b172e;
-        color: #7b172e;
+        border-bottom: 1px solid #ed1c24;
+        color: #ed1c24;
         float: left;
         width: 50%;
         margin-top: 2px;
@@ -478,10 +478,10 @@ header .glyphicon {
 
 /*.employee_details_box .col-md-3 {
     min-height: 300px;
-    border-right: 1px solid #7b172e;
+    border-right: 1px solid #ed1c24;
 }*/
 #map {
-    border: 1px solid #7b172e !important;
+    border: 1px solid #ed1c24 !important;
     padding: 2px;
 }
 /* 6/10/15 */
@@ -492,7 +492,7 @@ header .glyphicon {
 
 
 .modal-title {
-    color: #ad324f;
+    color: #ed1c24;
     font-size: 22px;
     font-weight: bold;
 }
@@ -500,13 +500,13 @@ header .glyphicon {
 
 
 .btn-default {
-    background: #7b172e;
+    background: #494949!important;
     color: #fff;
     border: 0px;
 }
 
     .btn-default:hover {
-        background: #ad324f;
+        background: #494949!important;
         color: #fff;
         border: 0px;
     }
@@ -553,7 +553,7 @@ header .glyphicon {
 
 .appointment_history_box table th, .payment_history_box table th, .notification_history_box table th, .subscribed_pakage_box table th {
     background: #f3e8ea;
-    color: #7b172e;
+    color: #ed1c24;
 }
 
 .panel-group {
@@ -569,7 +569,7 @@ header .glyphicon {
 /*07/10/15*/
 
 .search_box {
-    background: #b06577;
+    background: #ed1c24;
     padding: 8px;
     margin-bottom: 10px;
 }
@@ -587,11 +587,11 @@ header .glyphicon {
 
         .main_box .table-responsive table th {
             background: #f3e8ea;
-            color: #7b172e;
+            color: #ed1c24;
         }
 
         .main_box .table-responsive .glyphicon {
-            background: #7b172e;
+            background: #ed1c24;
             padding: 6px 6px;
             border-radius: 4px;
             margin-right: 5px;
@@ -650,7 +650,7 @@ header .glyphicon {
 
 .jqx-widget-header {
     background: #f3e8ea !important;
-    color: #7b172e;
+    color: #ed1c24;
 }
 
 .jqx-grid-cell-hover {
@@ -662,13 +662,13 @@ header .glyphicon {
 }
 
 .scheduler_default_rowheader {
-    background: #ad324f;/* !important;*/
+    background: #ed1c24!important;/* !important;*/
     color: #fff !important;
     border: 1px solid #66081e !important;
 }
 
     .scheduler_default_rowheader:hover {
-        background: #66081e !important;
+        background: #494949 !important;
     }
 
     .scheduler_default_rowheader .scheduler_default_rowheader_inner div {
@@ -698,7 +698,7 @@ header .glyphicon {
 }
 
 .h4heading {
-    color: #ad324f;
+    color: #ed1c24;
     font-size: 22px;
     font-weight: bold;
     border-bottom: 1px solid #b06577;
@@ -728,11 +728,11 @@ header .glyphicon {
 }
 
 .btn[disabled] {
-    background: #7b172e;
+    background: #494949!important;
 }
 
     .btn[disabled]:hover {
-        background: #7b172e;
+        background: #494949!important;
     }
 
 .btnDropdown[disabled] {
@@ -752,14 +752,14 @@ header .glyphicon {
 }
 
 .heading_select label {
-    background: #ad324f;
+    background: #ed1c24;
     padding: 4px 10px;
     margin-right: 10px;
     color: #fff;
 }
 
 .send_Entermobile label {
-    background: #ad324f;
+    background: #ed1c24;
     padding: 4px 10px;
     margin-right: 10px;
     color: #fff;
