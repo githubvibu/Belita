@@ -381,7 +381,8 @@ function createService($scope, $cookieStore, $location, service, commonService, 
                 var str = "";
                 if ($scope.EDIT) {
 
-                    str += '<a onclick="ShowServiceModel(' + value + ')"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a><a onclick="DeleteService(' + value + ')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>';
+                    //str += '<a onclick="ShowServiceModel(' + value + ')"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a><a onclick="DeleteService(' + value + ')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>';
+                    str += '<a onclick="ShowServiceModel(' + value + ')"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>';
                 }
 
                 return str;

@@ -12,7 +12,8 @@ function manageService($http, $rootScope, $location, app) {
     var appUrlUpdateCity = app.serviceBaseURL + "product/update/cityInfo";
 
     var appUrlServiceListByCategoryId = app.serviceBaseURL + "product/list/shortinfo/by/categoryid";
-    var apiUrlServiceDelete = app.serviceBaseURL + "product/delete/by/id";
+    //var apiUrlServiceDelete = app.serviceBaseURL + "product/delete/by/id";
+    var apiUrlServiceDelete = app.serviceBaseURL + "product/delete/by/idAndcityId";
 
     var services = {};
     services.GetProductServiceList = GetProductServiceList;
@@ -93,8 +94,9 @@ function manageService($http, $rootScope, $location, app) {
 
     function DeleteService(id)
     {
-        return $http.post(apiUrlServiceDelete + "?prodid=" + id)
+        return $http.post(apiUrlServiceDelete + "?prodid=" + id.serviceId + "&cityId=" + id.cityId)
         .success(function (response) {
+            ShowServiceModel(id.serviceId);
             return response.result_set;
         });
     }
